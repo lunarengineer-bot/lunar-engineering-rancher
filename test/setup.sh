@@ -1,6 +1,6 @@
 #!/bin/bash
 # Create a testing artifact folder.
-mkdir .p test/files/artifacts
+mkdir -p files/artifacts
 # Create an .ssh key for the testing routine.
 ssh-keygen -t ed25519 \
     -a 100 \
@@ -15,7 +15,7 @@ sed "s/<USER_KEY>/$USER_KEY/g" files/user-data-template > files/artifacts/lunare
 lxc network create testing_net --type=bridge
 # Use a flavor of Ubuntu to create a VM using this network configuration and user configuration
 lxc launch ubuntu-daily:bionic test-container \
-    --network-config=$(cat files/network-config) \
-    --config=user.user-data="$(cat files/artifacts/lunarengineer-bot-user-data)"
+    --config=cloud-init.network-config=$(cat files/network-config) \
+    --config=cloud-init.user-data="$(cat files/artifacts/lunarengineer-bot-user-data)"
 # Attach that container to this testing network to ensure a unique IP.
 lxc network attach testing_net test-container eth0
