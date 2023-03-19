@@ -8,12 +8,12 @@ ssh_pwauth: false
 hostname: rancherpi
 system_info:
   default_user:
-    name: lunarengineerbot
+    name: lunarengineer-bot
 packages:
   - ntp
 users:
   - default
-  - name: lunarengineerbot
+  - name: lunarengineer-bot
     gecos: Lunar Engineering Bot
     sudo: ALL=(ALL) NOPASSWD:ALL
     groups: users, adm, docker, sudo
@@ -37,3 +37,5 @@ runcmd:
   - [parted, /dev/mmcblk0, mkpart, primary, xfs, 16001MB, 100%]
   - [mkfs.xfs, -f, /dev/mmcblk0p3]
   - [partprobe]
+  - [ufw, disable]
+  - 'curl -fsSL https://get.docker.com | sh'

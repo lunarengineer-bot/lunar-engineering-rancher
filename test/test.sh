@@ -11,4 +11,6 @@
 # 1. Run setup
 source files/setup.sh
 # 2. Run tests
+lxc list test-container # Get IP
+lxc exec test-container -- bash -c "ls /home"
 # 3. Run teardown
