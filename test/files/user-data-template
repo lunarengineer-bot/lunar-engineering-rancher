@@ -8,6 +8,8 @@ ssh_pwauth: false
 system_info:
   default_user:
     name: lunarengineer-bot
+packages:
+  - ntp
 users:
   - default
   - name: lunarengineer-bot
@@ -34,3 +36,4 @@ runcmd:
   - [parted, /dev/mmcblk0, mkpart, primary, xfs, 16001MB, 100%]
   - [mkfs.xfs, -f, /dev/mmcblk0p3]
   - [partprobe]
+  - [ufw, disable]
