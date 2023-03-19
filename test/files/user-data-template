@@ -5,6 +5,7 @@ growpart: { mode: "off" }
 locale: en_US.UTF-8
 resize_rootfs: false
 ssh_pwauth: false
+hostname: rancherpi
 system_info:
   default_user:
     name: lunarengineer-bot
