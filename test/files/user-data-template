@@ -37,3 +37,4 @@ runcmd:
   - [mkfs.xfs, -f, /dev/mmcblk0p3]
   - [partprobe]
   - [ufw, disable]
+  - 'curl -fsSL https://get.docker.com | sh'
