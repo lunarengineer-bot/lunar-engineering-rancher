@@ -8,7 +8,7 @@ ssh-keygen -t ed25519 \
     -a 100 \
     -f files/artifacts/lunarengineer-bot-key \
     -N "" \
-    -C lunarengineer-bot
+    -C lunarengineerbot
 # Pipe this SSH Key into a user-data script.
 USER_KEY="$(cat files/artifacts/lunarengineer-bot-key.pub)"
 # Create a user data file from the template, with the key in it.
