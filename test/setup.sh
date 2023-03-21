@@ -18,7 +18,7 @@ sed "s/<USER_KEY>/$USER_KEY/g" files/user-data-template > files/artifacts/lunare
 lxc network create testing_net --type=bridge
 # Use a flavor of Ubuntu to create a VM using this network configuration and user configuration
 lxc launch ubuntu-daily:bionic test-container \
-    --config=cloud-init.network-config="$(cat files/network-config)" \
+    #--config=cloud-init.network-config="$(cat files/network-config)" \
     --config=cloud-init.user-data="$(cat files/artifacts/lunarengineer-bot-user-data)"
 # Attach that container to this testing network to ensure a unique IP.
 lxc network attach testing_net test-container eth0
