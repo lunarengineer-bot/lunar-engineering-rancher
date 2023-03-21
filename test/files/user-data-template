@@ -26,3 +26,5 @@ users:
 #
 # create an additional partition and mark where on the disk it starts and stops
 # this can be used later for a cluster filesystem
+runcmd:
+  - 'echo "STUPID"

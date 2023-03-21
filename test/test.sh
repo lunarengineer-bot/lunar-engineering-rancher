@@ -12,5 +12,7 @@
 source files/setup.sh
 # 2. Run tests
 lxc list test-container # Get IP
-lxc exec test-container -- bash -c "ls /home"
+lxc exec test-container -- bash -c "cat /var/log/cloud-init.log"
+lxc exec test-container -- bash -c "cat /root/.ssh/authorized_keys"
+
 # 3. Run teardown
