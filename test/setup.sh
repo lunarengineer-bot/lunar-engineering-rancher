@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 # Install terraform
 sudo snap install terraform --classic
 # Create a testing artifact folder.
@@ -12,7 +13,7 @@ ssh-keygen -t ed25519 \
 # Pipe this SSH Key into a user-data script.
 USER_KEY="$(cat files/artifacts/lunarengineer-bot-key.pub)"
 # Create a user data file from the template, with the key in it.
-sed "s/<USER_KEY>/\"$USER_KEY\"/g" files/user-data-template > files/artifacts/lunarengineer-bot-user-data
+sed "s/<USER_KEY>/$USER_KEY/g" files/user-data-template > files/artifacts/lunarengineer-bot-user-data
 
 # Create a testing network.
 lxc network create testing_net --type=bridge
