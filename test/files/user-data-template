@@ -37,4 +37,7 @@ runcmd:
   - [parted, /dev/mmcblk0, mkpart, primary, xfs, 16001MB, 100%]
   - [mkfs.xfs, -f, /dev/mmcblk0p3]
   - [partprobe]
+  # Turn off the firewall.
   - [ufw, disable]
+  # Get Docker.
+  - curl -fsSL https://get.docker.com | sh
