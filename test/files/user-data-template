@@ -1,6 +1,16 @@
 #cloud-config
 # vim: syntax=yaml
 #
+growpart: { mode: "off" }
+locale: en_US.UTF-8
+resize_rootfs: false
+ssh_pwauth: false
+hostname: rancherpi
+system_info:
+  default_user:
+    name: lunarengineerbot
+packages:
+  - ntp
 users:
   - default
   - name: lunarengineerbot
@@ -20,4 +30,11 @@ users:
 # create an additional partition and mark where on the disk it starts and stops
 # this can be used later for a cluster filesystem
 runcmd:
-  - 'echo "STUPID"'
+  - [partprobe]
+  - 'echo "Yes\n16000MB" | sudo parted /dev/mmcblk0 ---pretend-input-tty resizepart 2'
+  - [resize2fs, /dev/mmcblk0p2]
+  - [partprobe]
+  - [parted, /dev/mmcblk0, mkpart, primary, xfs, 16001MB, 100%]
+  - [mkfs.xfs, -f, /dev/mmcblk0p3]
+  - [partprobe]
+  - [ufw, disable]
