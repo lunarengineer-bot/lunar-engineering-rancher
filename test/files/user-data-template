@@ -41,3 +41,5 @@ runcmd:
   - [ufw, disable]
   # Get Docker.
   - curl -fsSL https://get.docker.com | sh
+  # Get K3s
+  - curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="***" sh -s - server --cluster-init
