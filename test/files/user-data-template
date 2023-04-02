@@ -42,4 +42,4 @@ runcmd:
   # Get Docker.
   - curl -fsSL https://get.docker.com | sh
   # Get K3s
-  - curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="***" sh -s - server --cluster-init
+  - curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.26.3+k3s1" sh -s - server --cluster-init
