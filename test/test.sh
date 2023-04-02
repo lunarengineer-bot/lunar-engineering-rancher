@@ -15,4 +15,5 @@ lxc list test-container # Get IP
 lxc exec test-container -- bash -c "cat /var/log/cloud-init.log"
 lxc exec test-container -- bash -c "cat /root/.ssh/authorized_keys"
 
+scp -i files/artifacts/lunarengineer-bot-key lunarengineerbot@10.47.185.234:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 # 3. Run teardown
